@@ -10,40 +10,7 @@ export class EmployeeService {
     employees: Employee[];
     readonly baseURL = 'http://localhost:3000/employees';
     private headers = new HttpHeaders().set('Content-Type', 'application/json');
-    // private listEmployees: Employee[] = [
-    //     {
-    //         firstName: 'Manasa',
-    //         lastName: 'Janga',
-    //         age: 29,
-    //         email: 'iammanasaappidi@gmail.com',
-    //         phoneNumber: 7276671727,
-    //         birthDay: new Date('08/10/1990'),
-    //         favoriteColor: 'Red',
-    //         photoPath: 'assets/images/mark.png'
-    //     },
-    //     {
-    //         firstName: 'Manasa',
-    //         lastName: 'Janga',
-    //         age: 29,
-    //         email: 'iammanasaappidi@gmail.com',
-    //         phoneNumber: 7276671727,
-    //         birthDay: new Date('08/10/1990'),
-    //         favoriteColor: 'Red',
-    //         photoPath: 'assets/images/mary.png'
-    //     },
-    //     {
-    //         firstName: 'Manasa',
-    //         lastName: 'Janga',
-    //         age: 29,
-    //         email: 'iammanasaappidi@gmail.com',
-    //         phoneNumber: 7276671727,
-    //         birthDay: new Date('08/10/1990'),
-    //         favoriteColor: 'Red',
-    //         photoPath: 'assets/images/john.jpg'
-    //     }
-
-    // ];
-
+    
     constructor(private http: HttpClient) { }
 
     // By clicking on save button insertion in DB
