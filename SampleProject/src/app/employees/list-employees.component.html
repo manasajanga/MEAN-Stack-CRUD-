@@ -1,0 +1,66 @@
+<div class="card" *ngFor="let employee of employeeService.employees">
+<h3 class="card-header">{{employee.lastName}}</h3>
+<div class="card-body">
+    <div class="col-sm-10">
+      <div class="row vertical-align">
+        <div class="col-sm-4">
+          <img class="imageClass" src="/assets/images/mark.png" />
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-6">
+              FirstName
+            </div>
+            <div class="col-sm-6">
+              : {{employee.firstName}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              Birth Day
+            </div>
+            <div class="col-sm-6">
+              : {{employee.birthDay | date}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              Phone
+            </div>
+            <div class="col-sm-6">
+              : {{employee.phoneNumber}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              Email
+            </div>
+            <div class="col-sm-6">
+              : {{employee.email}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              Age
+            </div>
+            <div class="col-sm-6">
+              : {{employee.age}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              Favorite Color
+            </div>
+            <div class="col-sm-6">
+              : {{employee.favoriteColor}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-primary" (click)="onEdit(employee)">Edit</button>
+    <button class="btn btn-danger" (click)="onDelete(employee)">Delete</button>
+  </div>
+</div>

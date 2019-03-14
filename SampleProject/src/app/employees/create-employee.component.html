@@ -1,0 +1,103 @@
+<div class="container">
+  <h1>Create Employee Form</h1>
+  <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employee._id">
+    <div class="form-group">
+      <label for="firstName" class="form-control-label">First Name</label>
+      <input type="text" name="firstName" [(ngModel)]="employee.firstName" id="firstName" required class="form-control"
+        pattern="[a-zA-Z ]*" [class.is-invalid]="firstName.invalid && firstName.touched"
+        [class.is-valid]="firstName.valid" #firstName="ngModel">
+      <div class="invalid-feedback" *ngIf="firstName.errors?.required && firstName.touched">
+        First Name is required
+      </div>
+      <div class="invalid-feedback" *ngIf="firstName.errors?.pattern && firstName.touched">
+        First Name is invalid
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName" class="form-control-label">Last Name</label>
+      <input type="text" name="lastName" [(ngModel)]="employee.lastName" id="lastName" required class="form-control"
+        pattern="[a-zA-Z ]*" [class.is-invalid]="lastName.invalid && lastName.touched" [class.is-valid]="lastName.valid"
+        #lastName="ngModel">
+      <div class="invalid-feedback" *ngIf="lastName.errors?.required && lastName.touched">
+        Last Name is required
+      </div>
+      <div class="invalid-feedback" *ngIf="lastName.errors?.pattern && lastName.touched">
+        Last Name is invalid
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" id="age" pattern="[0-9]*" name="age" [(ngModel)]="employee.age" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-control-label">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="employee.email" required [email]="employee.email!==''"
+        class="form-control" [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid"
+        #email="ngModel">
+      <div class="invalid-feedback" *ngIf="email.errors?.required && email.touched">
+        Email is required
+      </div>
+      <div class="invalid-feedback" *ngIf="email.errors?.email && email.touched">
+        Email is invalid
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber" class="form-control-label">Phone Number</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="employee.phoneNumber" required
+        class="form-control" [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched"
+        [class.is-valid]="phoneNumber.valid" #phoneNumber="ngModel">
+      <div class="invalid-feedback" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+        Phone Number is required
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="birthDay">Birth Day</label>
+        <input type="text" bsDatepicker [bsConfig]="datePickerConfig" id="birthDay" name="birthDay"
+          [(ngModel)]="employee.birthDay" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Favorite Color:</label>
+      <div class="form-check-inline">
+        <input class="form-check-input" type="radio" value="Red" name="favoriteColor"
+          [(ngModel)]="employee.favoriteColor">
+        <label class="form-check-label">Red</label>
+      </div>
+      <div class="form-check-inline">
+        <input class="form-check-input" type="radio" value="Green" name="favoriteColor"
+          [(ngModel)]="employee.favoriteColor">
+        <label class="form-check-label">Green</label>
+      </div>
+      <div class="form-check-inline">
+        <input class="form-check-input" type="radio" value="Blue" name="favoriteColor"
+          [(ngModel)]="employee.favoriteColor">
+        <label class="form-check-label">Blue</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="photoPath">Employee Photo</label>
+      <input type="file" id="photoPath" accept="image/*" (change)="handleFileInput($event.target.files)"
+        name="photoPath" class="form-control-file" >
+    </div> 
+    <div class="form-group">
+      <img [src]="imageURL" height="200" width="200">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
+
+  </form>
+</div>
+
+Angular generated form model: {{ employeeForm.value | json }}
+<!--<br />
+<br />
+Our own generated Employee Model : {{employee | json}} -->
